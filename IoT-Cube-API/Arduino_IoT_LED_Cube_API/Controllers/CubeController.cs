@@ -13,20 +13,28 @@ namespace Arduino_IoT_LED_Cube_API.Controllers
     [RoutePrefix("CubeControl")]
     public class CubeController : ApiController
     {
-        JObject command;
-
+        
         public CubeController()
         {
-            command = new JObject();
         }
 
         [HttpGet]
         [Route("SendCommand/{commandInput}")]
-        public HttpStatusCode SendCommand(string commandInput)
+        public JObject SendCommand(string commandInput)
         {
             var directory = System.Web.HttpContext.Current.Server.MapPath("/Commands");
             var filepath = Directory.GetFiles(directory, "commands.txt");
             var path = Path.Combine(directory, filepath[0]);
+            string text = System.IO.File.ReadAllText(@path).Trim();
+
+            JObject response = new JObject();
+
+            if (text.Trim() == commandInput)
+            {
+                response["Message"] = "Already executed";
+                return response;
+            }
+
             File.WriteAllText(@path, String.Empty);
 
             using (System.IO.StreamWriter file =
@@ -34,7 +42,10 @@ namespace Arduino_IoT_LED_Cube_API.Controllers
             {
                 file.WriteLine(commandInput);
             }
-            return HttpStatusCode.OK;
+
+
+            response["Message"] = "OK";
+            return response;
 
             //command["Command"] = commandInput;
             //return HttpStatusCode.OK;
@@ -44,8 +55,13 @@ namespace Arduino_IoT_LED_Cube_API.Controllers
         [Route("GetCommand")]
         public JObject GetCommand()
         {
-            Console.WriteLine("");
-            return command;
+            var directory = System.Web.HttpContext.Current.Server.MapPath("/Commands");
+            var filepath = Directory.GetFiles(directory, "commands.txt");
+            var path = Path.Combine(directory, filepath[0]);
+            string text = System.IO.File.ReadAllText(@path).Trim();
+            JObject response = new JObject();
+            response["Command"] = text;
+            return response;
         }
     }
 }
