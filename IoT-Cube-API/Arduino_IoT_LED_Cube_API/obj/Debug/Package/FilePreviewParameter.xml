@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="arduinoiotcube" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Varjitt\\Documents\\GitHub\\Arduino_IoT_LED_Cube_API\\Arduino_IoT_LED_Cube_API\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Varjitt\\Documents\\GitHub\\Arduino_IoT_LED_Cube_API\\Arduino_IoT_LED_Cube_API\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Arduino_IoT_LED_Cube_API-20151213014244.mdf;Initial Catalog=aspnet-Arduino_IoT_LED_Cube_API-20151213014244;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Varjitt\\Documents\\GitHub\\Arduino_IoT_LED_Cube_API\\Arduino_IoT_LED_Cube_API\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>
