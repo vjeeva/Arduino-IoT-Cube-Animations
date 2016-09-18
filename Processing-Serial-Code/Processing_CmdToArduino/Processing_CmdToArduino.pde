@@ -10,11 +10,11 @@ void setup(){
 }
 
 void draw(){
-  input = loadStrings("http://192.168.0.10:51111/Commands/commands.txt"); 
+  input = loadStrings("http://192.168.0.15:51111/Commands/commands.txt"); 
   if (input != null && input.length != 0){
    String s_last = input[0];
    delay(200);
-   input = loadStrings("http://192.168.0.10:51111/Commands/commands.txt");
+   input = loadStrings("http://192.168.0.15:51111/Commands/commands.txt");
    if (input.length != 0) {
      String s_current = input[0];
      if (!s_current.equals(s_last)) {
